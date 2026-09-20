@@ -1,0 +1,38 @@
+! SW1 running-config
+! Placeholder. Replace with the actual output of:
+!   SW1# show running-config
+! after building the lab in Packet Tracer.
+!
+! Full config goes here once the lab is complete.
+
+hostname SW1
+
+vlan 10
+ name SALES
+vlan 20
+ name IT
+vlan 30
+ name GUEST
+
+interface FastEthernet0/1
+ description PC1 - Sales
+ switchport mode access
+ switchport access vlan 10
+
+interface FastEthernet0/2
+ description PC2 - IT
+ switchport mode access
+ switchport access vlan 20
+
+interface FastEthernet0/3
+ description PC3 - Guest
+ switchport mode access
+ switchport access vlan 30
+
+interface GigabitEthernet0/1
+ description Trunk to R1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30
+
+end
