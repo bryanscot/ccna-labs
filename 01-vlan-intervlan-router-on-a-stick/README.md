@@ -1,8 +1,7 @@
 # Lab 01: VLAN & Inter-VLAN Routing (Router-on-a-Stick)
 
 **Topics:** VLANs, 802.1Q trunking, Subinterfaces, Inter-VLAN routing  
-**Difficulty:** Beginner  
-**Tools:** Packet Tracer  
+**Tools:** Cisco Packet Tracer  
 **Date completed:** September 2026
 
 ---
@@ -26,12 +25,12 @@ you want devices on different VLANs to talk.
 ![Topology](topology.png)
 
 **Devices:**
-- R1: router, three subinterfaces on Gi0/0/0
+- R1: router, three subinterfaces on Gi0/0
 - SW1: Layer 2 switch
 - PC1, PC2, PC3: one per VLAN
 
 **Connections:**
-- R1 Gi0/0/0 to SW1 Gi0/1 (802.1Q trunk)
+- R1 Gi0/0 to SW1 Gi0/1 (802.1Q trunk)
 - SW1 Fa0/1 to PC1 (VLAN 10)
 - SW1 Fa0/2 to PC2 (VLAN 20)
 - SW1 Fa0/3 to PC3 (VLAN 30)
@@ -101,11 +100,11 @@ forwarding columns.
 ### On R1: subinterfaces
 
 ```
-R1(config)# interface gi0/0/0
+R1(config)# interface gi0/0
 R1(config-if)# no shutdown
 R1(config-if)# exit
 
-R1(config)# interface gi0/0/0.10
+R1(config)# interface gi0/0.10
 R1(config-subif)# encapsulation dot1Q 10
 R1(config-subif)# ip address 192.168.10.1 255.255.255.0
 R1(config-subif)# exit
@@ -114,9 +113,9 @@ R1(config-subif)# exit
 Same pattern for `.20` and `.30` with their respective VLAN tags and 
 gateway IPs.
 
-The subinterface number is cosmetic. `Gi0/0/0.10` is just a label. What 
+The subinterface number is cosmetic. `Gi0/0.10` is just a label. What 
 actually binds the subinterface to VLAN 10 is the `encapsulation dot1Q 10` 
-line. Verified with `show ip interface brief` that the physical Gi0/0/0 
+line. Verified with `show ip interface brief` that the physical Gi0/0 
 and all three subinterfaces were up/up. The physical interface has no IP 
 address, which is correct, since it just carries the tagged frames.
 
@@ -149,7 +148,7 @@ database yet.
 
 ![show ip interface brief](screenshots/03-show-ip-interface-brief.png)
 
-All four interfaces showed up/up. Gi0/0/0 had no IP address, which is 
+All four interfaces showed up/up. Gi0/0 had no IP address, which is 
 correct, since it just carries the tagged frames. The three subinterfaces 
 each had their correct gateway IP.
 
@@ -190,15 +189,15 @@ VLAN.
 ### Break 2: Wrong dot1Q tag on the IT subinterface
 
 ```
-R1(config)# interface gi0/0/0.20
+R1(config)# interface gi0/0.20
 R1(config-subif)# encapsulation dot1Q 21
 ```
 
 **What happened:** PC2 couldn't reach its gateway at all, but 
-`show ip interface brief` on R1 still showed Gi0/0/0.20 as up/up. The 
+`show ip interface brief` on R1 still showed Gi0/0.20 as up/up. The 
 interface looked completely healthy.
 
-**How I diagnosed it:** `show interfaces gi0/0/0.20` revealed the 
+**How I diagnosed it:** `show interfaces gi0/0.20` revealed the 
 subinterface was tagged for VLAN 21, not VLAN 20. `show ip interface brief` 
 doesn't show the VLAN tag, which is why the interface looked fine. This is 
 a good reminder that a single show command never tells the whole story.
@@ -210,7 +209,7 @@ a good reminder that a single show command never tells the whole story.
 ### Break 3: Wrong subnet mask on the Guest subinterface
 
 ```
-R1(config)# interface gi0/0/0.30
+R1(config)# interface gi0/0.30
 R1(config-subif)# ip address 192.168.30.1 255.255.255.128
 ```
 
@@ -258,3 +257,6 @@ actual usable range.
 
 ---
 
+fine for 
+small networks and labs, but production enterprise cores usually use L3 
+switches.
