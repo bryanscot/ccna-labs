@@ -31,8 +31,6 @@ Every lab in this repo follows the same structure:
 - **Step-by-step configuration** — the exact CLI commands with an explanation of *why* each one is used
 - **Verification** — the `show` commands and ping tests that confirm the config is working, with what the output actually means
 - **Break It on Purpose** — deliberate faults introduced and diagnosed from scratch, because troubleshooting is what separates a lab-doer from an engineer
-- **Interview Takeaways** — key learnings written for portfolio use, plus likely interview questions with model answers
-- **Wireshark Moment** — packet-level insight where it adds something meaningful
 - **Stretch Goals** — optional extensions for depth once the basics work
 
 ---
