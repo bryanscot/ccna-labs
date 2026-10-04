@@ -49,6 +49,6 @@ Where a lab references GNS3, it's noted in that lab's overview.
 Brian Waweru — Junior Network Engineer based in Nairobi, Kenya.  
 Currently finalizing toward CCNA 200-301.
 
-- Portfolio: https://brian-networking-portfolio.vercel.app
-- GitHub: [github.com/bryanscot](https://github.com/bryanscot)
-- LinkedIn: [linkedin.com/in/brian-waweru](https://www.linkedin.com/in/brian-waweru-a08141264)
+* Portfolio: <a href="https://brian-networking-portfolio.vercel.app" target="_blank">https://brian-networking-portfolio.vercel.app</a>
+* GitHub: <a href="https://github.com/bryanscot" target="_blank">github.com/bryanscot</a>
+* LinkedIn: <a href="https://linkedin.com/in/brian-waweru" target="_blank">linkedin.com/in/brian-waweru</a>
