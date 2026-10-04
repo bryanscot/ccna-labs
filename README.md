@@ -51,4 +51,4 @@ Currently finalizing toward CCNA 200-301.
 
 * Portfolio: <a href="https://brian-networking-portfolio.vercel.app" target="_blank">https://brian-networking-portfolio.vercel.app</a>
 * GitHub: <a href="https://github.com/bryanscot" target="_blank">github.com/bryanscot</a>
-* LinkedIn: <a href="www.linkedin.com/in/brian-waweru-a08141264" target="_blank">linkedin.com/in/brian-waweru</a>
+* LinkedIn: <a href="https://www.linkedin.com/in/brian-waweru-a08141264" target="_blank">linkedin.com/in/brian-waweru</a>
